@@ -1,0 +1,12 @@
+.track{
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 90vw;
+    border: 1px solid greenyellow;
+    display: flex;
+    span{
+        border: 1px solid mediumturquoise;
+        flex: 1;
+    }
+}
