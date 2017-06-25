@@ -3,10 +3,20 @@
     justify-content: flex-start;
     align-items: stretch;
     width: 90vw;
-    border: 1px solid greenyellow;
     display: flex;
-    span{
-        border: 1px solid mediumturquoise;
+    cursor: pointer;
+    .blip{
         flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .blipToken:hover{
+            color: rebeccapurple;
+            font-weight: 700;
+        }
+        .blipToken.on{
+            color: red;
+            font-weight: 700;
+        }
     }
 }

@@ -1,3 +1,7 @@
  <div class="track" >
-     <span *ngFor="let a of blips; let index = index">b</span>
+    <div *ngFor="let a of blips; let index = index" class="blip">
+         <span class="blipToken" [ngClass]="{'on': a.on }" (click)="toggleBlip(a)">o</span>
+    </div>
  </div>
+
+ {{blips|json}}
