@@ -1,7 +1,15 @@
- <div class="track" >
-    <div *ngFor="let a of blips; let index = index" class="blip">
-         <span class="blipToken" [ngClass]="{'on': a.on }" (click)="toggleBlip(a)">o</span>
+ <div id="playHead" [ngStyle]="{'left': playHead.position + '%', 'transition-duration':playHead.animationLength}"></div>
+ <div id="controls">
+    <button (click)="playPlink()">Play</button>
+    <button (click)="stopPlink()">Stop</button>
+ </div>    
+ <div id="trackWrapper">
+    <div class="track" >
+        <div *ngFor="let a of track.blips; let index = index"  (click)="toggleBlip(a)" class="blip" [ngClass]="{'on': a.on }">
+            <span class="blipToken">o</span>
+        </div>
     </div>
  </div>
-
- {{blips|json}}
+ <div id="debugArea">
+    {{track.blips|json}}
+ </div>

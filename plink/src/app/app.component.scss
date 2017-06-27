@@ -1,8 +1,17 @@
+#trackWrapper{
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex: 1;
+}
+#debugArea{
+    flex: 1;
+}
 .track{
     flex-direction: row;
     justify-content: flex-start;
     align-items: stretch;
-    width: 90vw;
+    width: 100%;
     display: flex;
     cursor: pointer;
     .blip{
@@ -10,13 +19,22 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        &.on{
+            color: red;
+            font-weight: 700;
+        }
         .blipToken:hover{
             color: rebeccapurple;
             font-weight: 700;
         }
-        .blipToken.on{
-            color: red;
-            font-weight: 700;
-        }
     }
+}
+
+#playHead{
+    height: 100%;
+    width: 1px;
+    position: absolute;
+    background-color: navy;
+    left: 0%;
+    transition: left 1s linear;
 }

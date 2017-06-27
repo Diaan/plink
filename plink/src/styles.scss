@@ -8,10 +8,19 @@ html,body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: lighten(black,70%);
 }
 body{
-    background-color: lighten(black,70%);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+app-root{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    height: 95vh;
+    width: 95vw;
+    outline: 1px solid green;
 }
