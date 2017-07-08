@@ -1,15 +1,16 @@
  <div id="playHead" [ngStyle]="{'left': playHead.position + '%', 'transition-duration':playHead.animationLength}"></div>
  <div id="controls">
-    <button (click)="playPlink()">Play</button>
+    <button (click)="startPlink()">Play</button>
     <button (click)="stopPlink()">Stop</button>
+    <input 
  </div>    
  <div id="trackWrapper">
-    <div class="track" >
-        <div *ngFor="let a of track.blips; let index = index"  (click)="toggleBlip(a)" class="blip" [ngClass]="{'on': a.on }">
-            <span class="blipToken">o</span>
+    <div class="track" *ngFor="let track of tracks; let index = index">
+        <div *ngFor="let blip of track.blips; let index = index"  (click)="toggleBlip(blip)" class="blip" [ngClass]="{'on': blip.on }">
         </div>
     </div>
  </div>
- <div id="debugArea">
-    {{track.blips|json}}
- </div>
+ <pre id="debugArea">
+    sounds by <a href="https://outro.io/sounds/explore/featured">outro</a>
+    {{tracks|json}}
+ </pre>
