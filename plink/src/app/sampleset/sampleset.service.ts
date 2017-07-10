@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 let sampleset = {
   title : 'bla',
-  nrOfBlips : 10,
+  nrOfBlips : 24,
   nrOfTracks: 0,
   folder:'./assets/set1/',
   tracks:[

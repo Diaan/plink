@@ -1,15 +1,19 @@
- <div id="playHead" [ngStyle]="{'left': playHead.position + '%', 'transition-duration':playHead.animationLength}"></div>
- <div id="controls">
+<div id="controls">
     <button (click)="startPlink()">Play</button>
     <button (click)="stopPlink()">Stop</button>
- </div>    
- <div id="trackWrapper">
+    <input [(ngModel)]="looplength">
+</div>    
+<div id="trackWrapper">
     <div class="track" *ngFor="let track of tracks; let index = index">
-        <div *ngFor="let blip of track.blips; let index = index"  (click)="toggleBlip(blip)" class="blip" [ngClass]="{'on': blip.on }">
+        <div *ngFor="let blip of track.blips; let index = index"  
+            (click)="toggleBlip(blip)" 
+            class="blip" 
+            [ngClass]="{'on': blip.on, 'playhead': index==playHead.blipPosition }">
         </div>
     </div>
- </div>
- <pre id="debugArea">
-    sounds by <a href="https://outro.io/sounds/explore/featured">outro</a>
-    {{tracks|json}}
- </pre>
+</div>
+<pre id="debugArea">
+sounds by <a href="https://outro.io/sounds/explore/featured">outro</a>
+{{playHead|json}}
+{{tracks|json}}
+</pre>

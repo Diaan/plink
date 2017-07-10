@@ -20,25 +20,19 @@
     .blip{
         flex: 1;
         display: flex;
+        margin:2px;
         align-items: center;
         justify-content: center;
-        border: 2px solid $bg-dark;
         background-color: transparentize($blip-color, 0.3);
         height: 2em;
         &.on{
             background-color: $blip-color;
         }
         &:hover{
-            border-color: $blip-color;
+            outline: 2px solid $blip-color;
+        }
+        &.playhead{
+            box-shadow: 0 0 3px 3px $blip-color; 
         }
     }
-}
-
-#playHead{
-    height: 100%;
-    width: 1px;
-    position: absolute;
-    background-color: navy;
-    left: 0%;
-    transform: translateX(5%);
 }

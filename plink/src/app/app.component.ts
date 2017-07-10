@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
 import { SamplesetService } from './sampleset/sampleset.service';
 
 @Component({
@@ -26,14 +27,14 @@ export class AppComponent implements OnInit{
       this.tracks.push(new Track(this.sampleset.tracks[index],this.sampleset.nrOfBlips,this.sampleset.folder))
     }
     
-    this.playHead = new PlayHead(this.looplength*1000/this.sampleset.nrOfBlips);
+    this.playHead = new PlayHead(this.sampleset.nrOfBlips);
   }
 
   toggleBlip(blip) {
     blip.toggle();
   }
   playPlink(){
-    let currentposition = this.playHead.move(this.sampleset.nrOfBlips);
+    let currentposition = this.playHead.move();
     for (let index = 0; index < this.sampleset.nrOfTracks; index++) {
       this.tracks[index].playBlipsAt(currentposition)
     }
@@ -57,38 +58,35 @@ export class AppComponent implements OnInit{
 }
 
 class PlayHead{
-  private blipPosition;
-  private position;
-  private animationLength;
-  private animLen;
-  constructor(animationLength){
+  public blipPosition;
+  private nrOfBlips
+
+  constructor(nrOfBlips){
     this.blipPosition = 0;
-    this.position = 0;
-    this.animLen = animationLength;
-    this.animationLength = animationLength+'ms';
+    this.nrOfBlips = nrOfBlips
   }
-  move(nrOfBlips){
-    if(this.blipPosition==nrOfBlips-1){
-      this.position = 0;
+
+  move(){
+    if(this.blipPosition==this.nrOfBlips-1){
       this.blipPosition = 0;
-      return this.blipPosition;
     }else{
-      this.position += 100/nrOfBlips;
       this.blipPosition++
-      return this.blipPosition-1;
     }
+    return this.blipPosition;
   }
 }
 
 class Track{
   private blips = new Array(0);
   public name;
+
   constructor(track,nrOfBlips,folder){
     this.name = track.name;
     for (let index = 0; index < nrOfBlips; index++) {
       this.blips.push(new Blip(folder+track.file))
     }
   }
+  
   playBlipsAt(index){
     this.blips[index].play()
   }
@@ -96,6 +94,7 @@ class Track{
 
 class Blip{
   public file;
+  public playing;
   public audio;
   public on = false;
   constructor(file){
@@ -110,6 +109,7 @@ class Blip{
   play(){
     if(this.on){
       this.audio.play();
+      this.playing = true;
     }
   }
 }
