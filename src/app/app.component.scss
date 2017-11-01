@@ -1,0 +1,38 @@
+@import "../variables";
+
+#trackWrapper{
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex: 1;
+}
+#debugArea{
+    flex: 1;
+    overflow: auto;
+}
+.track{
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+    .blip{
+        flex: 1;
+        display: flex;
+        margin:2px;
+        align-items: center;
+        justify-content: center;
+        background-color: transparentize($blip-color, 0.3);
+        height: 2em;
+        &.on{
+            background-color: $blip-color;
+        }
+        &:hover{
+            outline: 2px solid $blip-color;
+        }
+        &.playhead{
+            box-shadow: 0 0 3px 3px $blip-color; 
+        }
+    }
+}
